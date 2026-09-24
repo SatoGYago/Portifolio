@@ -98,6 +98,15 @@ body
 
 @media (min-width: 1024px)
 {
+    .desktop-icons{
+        padding-top: 10px;
+        display: grid;
+
+        height: 100%;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(auto-fit, minmax(70px, 90px));
+    }
+
     #desktop
     {
         height: 97vh;
