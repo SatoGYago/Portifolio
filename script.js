@@ -1,3 +1,11 @@
+const startButton = document.querySelector("#start-button")
+const startMenu = document.querySelector("#start-menu")
+
+startButton.addEventListener("click", () => {
+    startMenu.classList.toggle('open');
+})
+
+
 function setClock()
 {
     let clock = document.getElementById("clock");

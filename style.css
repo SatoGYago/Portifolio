@@ -86,6 +86,16 @@ body
 
 #start-menu
 {
+    display: none;
+}
+
+#start-menu.open
+{
+    display: block;
+}
+
+#start-menu 
+{
     .start-header
     {
         background: linear-gradient(
@@ -121,7 +131,6 @@ body
             border-left: solid 1px #A6C4E8
         }
     }
-    
 }
 
 
@@ -210,50 +219,50 @@ body
 
     #start-menu
     {
-        position: absolute;
-        background-color: white;
-        height: 50vh;
-        width: 20vw;
+            position: absolute;
+            background-color: white;
+            height: 50vh;
+            width: 20vw;
 
-        left: 0;
-        bottom: 3vh;
-        border-radius: 5px 5px 0px 0px;
-
-        .start-header
-        {
-            display: flex;
+            left: 0;
+            bottom: 3vh;
             border-radius: 5px 5px 0px 0px;
-            height: 9vh;
-            width: 100%;
 
-            #start-menu-photo
+            .start-header
             {
-                height: 70px;
-                width: 70px;
-                border: solid 1px white;
-                border-radius: 5px;
-                background-color: black;
-    
-                margin-left: 2%;
-                margin-top: 2%;
+                display: flex;
+                border-radius: 5px 5px 0px 0px;
+                height: 9vh;
+                width: 100%;
+
+                #start-menu-photo
+                {
+                    height: 70px;
+                    width: 70px;
+                    border: solid 1px white;
+                    border-radius: 5px;
+                    background-color: black;
+        
+                    margin-left: 2%;
+                    margin-top: 2%;
+                }
+            }
+            .start-body
+            {
+                display: flex;
+                height: 81.5%;
+                width: 100%;
+
+                .start-right
+                {
+                    height: 122.5%;
+                    width: 50%;
+                }
+                .start-left
+                {
+                    height: 122.5%;
+                    width: 55%;
+                }
             }
         }
-        .start-body
-        {
-            display: flex;
-            height: 81.5%;
-            width: 100%;
-
-            .start-right
-            {
-                height: 122.5%;
-                width: 50%;
-            }
-            .start-left
-            {
-                height: 122.5%;
-                width: 55%;
-            }
-        }
-    }
 }
