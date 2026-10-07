@@ -1,3 +1,30 @@
+const startupAnimation = document.querySelector("#startup-animation");
+const startupSkipButton = document.querySelector(".startup-skip");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let startupFinished = false;
+
+function finishStartup() {
+    if (startupFinished) return;
+    startupFinished = true;
+    startupAnimation.classList.add("leaving");
+    startupAnimation.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("system-starting");
+
+    window.setTimeout(() => startupAnimation.remove(), reduceMotion ? 120 : 700);
+}
+
+const welcomeDelay = reduceMotion ? 250 : 2800;
+const finishDelay = reduceMotion ? 650 : 4400;
+window.setTimeout(() => startupAnimation.classList.add("welcome"), welcomeDelay);
+window.setTimeout(finishStartup, finishDelay);
+
+startupSkipButton.addEventListener("click", finishStartup);
+document.addEventListener("keydown", (event) => {
+    if (!startupFinished && ["Escape", "Enter", " "].includes(event.key)) {
+        finishStartup();
+    }
+});
+
 const startButton = document.querySelector("#start-button")
 const startMenu = document.querySelector("#start-menu")
 

@@ -23,6 +23,110 @@ body
     overflow: hidden;
 }
 
+/* Inicialização inspirada no Windows XP */
+.startup-animation {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #fff;
+    background: #000;
+    opacity: 1;
+    transition: opacity .65s ease;
+}
+
+.startup-animation.leaving { opacity: 0; pointer-events: none; }
+.startup-boot,
+.startup-welcome {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .45s ease;
+}
+
+.startup-brand { display: flex; align-items: center; gap: 18px; transform: translateY(-18px); }
+.startup-brand > img { width: clamp(72px, 10vw, 105px); height: auto; }
+.startup-wordmark { display: flex; flex-direction: column; font-family: Arial, sans-serif; }
+.startup-wordmark small { align-self: flex-start; margin-left: 3px; font-size: clamp(10px, 1.2vw, 13px); }
+.startup-wordmark strong { font-size: clamp(30px, 5vw, 52px); font-weight: 400; line-height: .9; letter-spacing: -2px; }
+.startup-wordmark strong span { margin-left: 4px; color: #f07d24; font-size: .65em; font-style: italic; }
+
+.startup-loader {
+    width: 152px;
+    height: 15px;
+    margin-top: 36px;
+    overflow: hidden;
+    border: 2px solid #b9b9b9;
+    border-radius: 8px;
+    background: #050505;
+    box-shadow: inset 0 0 2px #fff8;
+}
+.startup-loader-blocks {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+    padding-top: 2px;
+    animation: xp-loader 1.15s linear infinite;
+}
+.startup-loader-blocks i {
+    width: 9px;
+    height: 7px;
+    border-radius: 1px;
+    background: linear-gradient(to right, #1737a8, #3d86ef, #1737a8);
+}
+.startup-boot > p { position: absolute; bottom: 24px; left: 28px; color: #aaa; font: 10px Arial, sans-serif; }
+
+.startup-welcome {
+    visibility: hidden;
+    opacity: 0;
+    background: #5a7edc;
+}
+.startup-welcome::before,
+.startup-welcome::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: #003399;
+}
+.startup-welcome::before { top: 0; border-bottom: 3px solid #84a5ef; }
+.startup-welcome::after { bottom: 0; border-top: 3px solid #e6a64b; }
+.welcome-content { display: flex; align-items: center; gap: clamp(18px, 4vw, 40px); }
+.welcome-content img { width: clamp(80px, 13vw, 130px); }
+.welcome-content span { font: italic clamp(28px, 5vw, 48px) Arial, sans-serif; text-shadow: 2px 2px #315ba7; }
+
+.startup-animation.welcome .startup-boot { opacity: 0; }
+.startup-animation.welcome .startup-welcome { visibility: visible; opacity: 1; }
+.startup-skip {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    z-index: 2;
+    padding: 6px 9px;
+    border: 1px solid #888;
+    color: #bbb;
+    background: #111b;
+    font: 11px Tahoma, sans-serif;
+    cursor: pointer;
+}
+.startup-animation.welcome .startup-skip { color: #fff; border-color: #b9cdf8; background: #315db0cc; }
+
+@keyframes xp-loader {
+    from { transform: translateX(-38px); }
+    to { transform: translateX(152px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .startup-loader-blocks { animation-duration: 2s; }
+    .startup-animation, .startup-boot, .startup-welcome { transition-duration: .1s; }
+}
+
 #desktop {
     position: relative;
     height: calc(100dvh - var(--taskbar-height));
