@@ -1,10 +1,13 @@
 * {
     margin: 0;
-    
+    box-sizing: border-box;
 }
+
+*::before, *::after { box-sizing: border-box; }
 
 :root {
     --start-menu-width: 380px;
+    --taskbar-height: 30px;
 
     --start-large-icon: 32px;
     --start-small-icon: 24px;
@@ -17,6 +20,14 @@ body
 {
     font-family: Tahoma, Verdana, sans-serif;
     font-size: 11px;
+    overflow: hidden;
+}
+
+#desktop {
+    position: relative;
+    height: calc(100dvh - var(--taskbar-height));
+    overflow: hidden;
+    background: #3a6ea5 url("imagens/wallpaper.jpg") center / cover no-repeat;
 }
 
 .desktop-icon span {
@@ -28,11 +39,18 @@ body
 
 .desktop-icon {
     width: 80px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 4px;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
 }
+
+.desktop-icon:focus-visible { border-color: #fff; background: #0b55b980; outline: 1px dotted #fff; }
 
 .desktop-icon img{
     width: 32px;
@@ -94,320 +112,497 @@ body
         }
 }
 
-#start-menu
-{
-    display: none;
-}
-
-#start-menu.open
-{
-    display: block;
-}
-
-#start-menu 
-{
-    .start-header
-    {
-        background: linear-gradient(
-            to bottom,
-            #1868CE 0%,
-            #0F60C9 15%,
-            #0B55B9 55%,
-            #1569D3 85%,
-            #3C8BE5 100%
-        );
-
-        border-top: 1px solid #6CA8EA;
-
-        box-shadow: inset 0 1px rgba(255, 255, 255, 0.25),
-        inset 0px -1px rgba(255, 255, 255, 0.20);
-
-        border-bottom: 2px solid #E68B2C;
-
-        #start-menu-name
-            {
-                color: white;
-                margin: 10px;
-                font-weight: lighter;
-                align-self: center;
-            }
-    }
-
-    .start-body
-    {
-        .start-right
-        {
-            background-color: #D3E5FA;
-            border-left: solid 1px #A6C4E8
-        }
-    }
-}
-
-.start-apps {
-                        height: 42px;
-                        padding: 4px 8px;
-
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                    }
-
-                    .start-apps img {
-                        width: 32px;
-                        height: 32px;
-                    }
-
-.start-right-item {
-    min-height: 32px;
-    padding: 3px 8px;
-
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.start-left img {
-    width: var(--start-large-icon);
-    height: var(--start-large-icon);
-}
-
-.start-right img {
-    width: var(--start-small-icon);
-    height: var(--start-small-icon);
-}
-
-.start-apps {
-    color: inherit;
-    text-decoration: none;
-}
-
-.start-app-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    font-family: Tahoma, Verdana, sans-serif;
-    line-height: 1.2;
-}
-
-.start-app-name {
-    font-size: 12px;
-    font-weight: bold;
-    color: #000;
-}
-
-.start-app-description {
-    margin-top: 2px;
-
-    font-size: 11px;
-    font-weight: normal;
-    color: #777;
-}
-
-.start-apps:hover .start-app-name,
-.start-apps:hover .start-app-description {
-    color: #fff;
-}
-
-.start-apps:hover {
-    background-color: #2F71CD;
-    outline: 1px solid #245DAB;
-}
-
-.start-left .start-apps:nth-child(3) {
-    border-top: 1px solid #D6D6D6;
-    margin-top: 4px;
-    padding-top: 5px;
-}
-/* Celular */
-
-
-/* Tablet*/
-@media (min-width: 768px)
-{
-
-}
-
-/* Desktop */
-
-@media (min-width: 1024px)
-{
-    .desktop-icons{
-        padding-top: 10px;
-        display: grid;
-
-        height: 100%;
-        grid-auto-flow: column;
-        grid-template-rows: repeat(auto-fit, minmax(70px, 90px));
-    }
-
-    #desktop
-    {
-        height: 97vh;
-        background-image: url(imagens/wallpaper.jpg);
-        background-size: 100%;
-        background-position-y: 50%;
-    }
-    #taskbar
-    {
-        display: flex;
-        height: 3vh;
-
-        background: linear-gradient(
-            to bottom,
-
-        );
-
-        #start-button 
-        {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            height: 30px;
-            padding: 0 12px 0 6px;
-            height: 3vh;
-            width: 5vw;
-            img
-            {
-                width: 22px;
-                height: 22px;
-                object-fit: contain;
-            }
-        }
-
-        #start-button:hover
-        {
-            background: linear-gradient(
-                to bottom,
-                #6fbd6a 0%,
-                #4fa64f 15%,
-                #59b65e 45%,
-                #288438 85%,
-                #3a7c46 100%
-            );
-        }
-
-        #system-tray
-        {
-            width: 6.5vw;
-            height: 3vh;
-            position: absolute;
-            right: 0;
-            
-            #clock 
-            {
-                right: 5%;
-                top: 25%;
-            }
-        }
-    }
-
-    #start-menu
-    {
-            position: absolute;
-            background-color: white;
-            height: 50vh;
-            width: 20vw;
-
-            left: 0;
-            bottom: 3vh;
-            border-radius: 5px 5px 0px 0px;
-
-            .start-header
-            {
-                display: flex;
-                border-radius: 5px 5px 0px 0px;
-                height: 9vh;
-                width: 100%;
-
-                #start-menu-photo
-                {
-                    height: 70px;
-                    width: 70px;
-                    border: solid 1px white;
-                    border-radius: 5px;
-                    background-color: black;
-        
-                    margin-left: 2%;
-                    margin-top: 2%;
-                }
-            }
-            .start-body
-            {
-                display: flex;
-                height: 81.5%;
-                width: 100%;
-
-                .start-right
-                {
-                    height: 118%;
-                    width: 50%;
-                }
-                .start-left
-                {
-                    display: grid;
-                    height: 122.5%;
-                    width: 55%;
-
-                    grid-template-columns: 1;
-                    grid-template-rows: repeat(auto-fit, minmax(32px, 42px));
-                }
-            }
-        }
-}
-
-.start-right {
-    width: 50%;
-    padding: 6px 5px;
-
-    background: linear-gradient(
-        to right,
-        #d3e5fa 0%,
-        #d9e9fb 45%,
-        #c9dff7 100%
-    );
-
-    border-left: 1px solid #95bdee;
-}
-
-.start-app-right {
+/* A barra tem altura estável para o menu ficar sempre acima dela. */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    min-height: 32px;
-    padding: 3px 6px;
+    height: var(--taskbar-height);
+    display: flex;
+    z-index: 1000;
+}
 
+#start-button {
     display: flex;
     align-items: center;
-    gap: 6px;
-
-    border: none;
-    background: transparent;
-
-    font-family: Tahoma, Verdana, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    color: #00156e;
-    text-align: left;
-
+    gap: 5px;
+    min-width: 95px;
+    padding: 0 12px 0 6px;
     cursor: pointer;
 }
 
-.start-app-right img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    flex-shrink: 0;
+#start-button img { width: 22px; height: 22px; object-fit: contain; }
+#taskbar-apps { display: flex; flex: 1; min-width: 0; overflow: hidden; }
+#system-tray { position: relative; min-width: 70px; height: var(--taskbar-height); }
+#system-tray #clock { right: 8px; top: 7px; }
+
+#taskbar #start-button[aria-expanded="true"] {
+    filter: brightness(.85);
+    box-shadow: inset 2px 2px 5px #145c20;
 }
 
-.start-app-right:hover {
+#start-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: var(--taskbar-height);
+    z-index: 1001;
+    box-sizing: border-box;
+    width: min(var(--start-menu-width), 100%);
+    max-height: calc(100dvh - var(--taskbar-height));
+    overflow: hidden;
+    background: #fff;
+    border: 2px solid #1854c2;
+    border-radius: 7px 7px 0 0;
+    box-shadow: 3px -2px 8px #0005;
+}
+
+#start-menu.open { display: flex; flex-direction: column; }
+#start-menu * { box-sizing: border-box; }
+
+.start-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    min-height: 64px;
+    padding: 8px;
+    background: linear-gradient(#1868ce, #0b55b9 55%, #3c8be5);
+    border-top: 1px solid #6ca8ea;
+    border-bottom: 2px solid #e68b2c;
+    box-shadow: inset 0 1px #ffffff40;
+}
+
+#start-menu-photo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: #d3e5fa url("imagens/windows-xp.png") center / 36px no-repeat;
+}
+
+#start-menu-name { color: #fff; text-shadow: 1px 1px 2px #15438c; }
+#start-menu-name h1 { font-size: 20px; }
+.start-body { display: flex; min-height: 0; overflow-y: auto; }
+.start-left, .start-right { width: 50%; min-width: 0; padding: 6px 5px; }
+.start-left { background: #fff; }
+.start-right {
+    background: linear-gradient(to right, #d3e5fa, #d9e9fb 45%, #c9dff7);
+    border-left: 1px solid #95bdee;
+}
+
+.start-apps, .start-app-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.start-apps { min-height: 50px; color: #000; }
+.start-app-right { min-height: 38px; font-weight: bold; color: #00156e; }
+.start-apps img { width: var(--start-large-icon); height: var(--start-large-icon); }
+.start-app-right img { width: var(--start-small-icon); height: var(--start-small-icon); }
+.start-apps img, .start-app-right img { object-fit: contain; flex-shrink: 0; }
+.start-app-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.start-app-name { font-size: 12px; font-weight: bold; }
+.start-app-description { margin-top: 2px; font-size: 11px; color: #777; }
+.start-app-text, .start-app-right span { overflow-wrap: anywhere; }
+
+.start-apps:hover, .start-apps:focus-visible,
+.start-app-right:hover, .start-app-right:focus-visible {
     background: #2f71cd;
     color: #fff;
-
     outline: 1px solid #245dab;
 }
+.start-apps:hover .start-app-description,
+.start-apps:focus-visible .start-app-description { color: #fff; }
 
-/* Linha que inicia um novo grupo */
-.start-app-right.section-start {
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px solid #a6c4e8;
+.section-start { position: relative; margin-top: 7px; }
+.section-start::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 6px;
+    right: 6px;
+    height: 1px;
+    background: #a6c4e8;
+}
+.start-left .section-start::before { background: #d6d6d6; }
+.start-footer {
+    flex-shrink: 0;
+    height: 30px;
+    background: linear-gradient(#3c8be5, #1569d3 50%, #0b55b9);
+    border-top: 1px solid #6ca8ea;
+}
+
+/* Janelas */
+#windows-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    top: 7%;
+    left: 12%;
+    width: min(760px, 76vw);
+    height: min(560px, 78vh);
+    min-width: 300px;
+    min-height: 280px;
+    flex-direction: column;
+    overflow: hidden;
+    pointer-events: auto;
+    background: #ece9d8;
+    border: 3px solid #0055e5;
+    border-top-width: 0;
+    border-radius: 8px 8px 2px 2px;
+    box-shadow: 4px 5px 12px #0007;
+}
+
+.window.open { display: flex; }
+.window.maximized { inset: 0; width: 100%; height: 100%; border-radius: 0; }
+
+.window-titlebar {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 4px 3px 6px;
+    color: #fff;
+    background: linear-gradient(#3f93ff 0%, #0865df 12%, #0055d5 55%, #0846aa 90%, #1d68e0 100%);
+    text-shadow: 1px 1px #003c9d;
+}
+
+.window-title { display: flex; align-items: center; gap: 5px; min-width: 0; font-weight: bold; }
+.window-title img { width: 18px; height: 18px; object-fit: contain; }
+.window-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.window-controls { display: flex; gap: 2px; }
+.window-controls button {
+    width: 23px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    font: bold 15px/17px Tahoma, sans-serif;
+    background: linear-gradient(135deg, #68a6f2, #0b59cd 60%, #003da6);
+    box-shadow: inset 1px 1px #ffffff80;
+    cursor: pointer;
+}
+.window-controls .window-close { background: linear-gradient(135deg, #f39a7b, #df3e1f 60%, #a71908); }
+.window-controls button:active { filter: brightness(.8); }
+
+/* Internet Explorer */
+.browser-menu {
+    display: flex;
+    gap: 18px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #aca899;
+    background: #ece9d8;
+}
+
+.browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    min-height: 38px;
+    padding: 3px 7px;
+    border-bottom: 1px solid #aca899;
+    background: linear-gradient(to right, #f5f3e8, #e6e2cf);
+}
+
+.browser-nav-button {
+    min-width: 29px;
+    height: 29px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #176b19;
+    font: bold 20px Arial, sans-serif;
+    cursor: pointer;
+}
+.browser-nav-button span { color: #222; font: 11px Tahoma, sans-serif; }
+.browser-nav-button:hover { border-color: #aca899; background: #fff9; }
+.browser-nav-button:disabled { color: #8aa28a; cursor: default; opacity: .65; }
+.browser-nav-button:disabled:hover { border-color: transparent; background: transparent; }
+
+.browser-address {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 6px;
+    border-bottom: 1px solid #aca899;
+    background: #ece9d8;
+}
+.browser-address img { width: 16px; height: 16px; object-fit: contain; margin-right: -24px; z-index: 1; }
+.browser-address input { min-width: 0; height: 22px; flex: 1; padding: 1px 4px 1px 23px; border: 1px solid #7f9db9; font: 11px Tahoma, sans-serif; }
+.browser-address button { height: 23px; padding: 0 9px; }
+
+.browser-page {
+    flex: 1;
+    overflow: auto;
+    color: #25324a;
+    background: linear-gradient(#eef5ff, #fff 230px);
+    font: 14px/1.5 Verdana, sans-serif;
+}
+.browser-hero { min-height: 235px; padding: 38px clamp(24px, 7vw, 72px); color: #fff; background: linear-gradient(135deg, #0758b8, #39a2df); }
+.browser-eyebrow { margin-bottom: 5px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.browser-hero h2 { margin-bottom: 10px; font-size: clamp(26px, 4vw, 42px); }
+.browser-hero p { max-width: 620px; }
+.browser-links { display: flex; gap: 10px; margin-top: 20px; }
+.browser-links a { padding: 7px 12px; border: 1px solid #fff; color: #064896; background: #fff; font-weight: bold; text-decoration: none; }
+.browser-links a:hover { color: #fff; background: transparent; }
+.browser-section { padding: 26px clamp(24px, 7vw, 72px); scroll-margin-top: 8px; }
+.browser-section h3 { margin-bottom: 8px; color: #0758b8; font-size: 21px; }
+.browser-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.browser-projects article { display: flex; flex-direction: column; gap: 5px; padding: 14px; border: 1px solid #9cbbe0; background: #f0f6ff; }
+.browser-projects span { color: #5c6879; font-size: 12px; }
+.browser-status { display: flex; justify-content: space-between; padding: 3px 7px; border-top: 1px solid #aca899; color: #333; background: #ece9d8; }
+.browser-page.browser-refreshed { animation: browser-refresh .18s ease-out; }
+@keyframes browser-refresh { from { opacity: .35; } to { opacity: 1; } }
+
+/* Meu Computador */
+.explorer-menu, .notepad-menu { padding: 5px 8px; border-bottom: 1px solid #aca899; background: #ece9d8; }
+.explorer-toolbar { display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 4px 8px; border-bottom: 1px solid #aca899; }
+.explorer-toolbar button { min-height: 28px; border: 1px solid transparent; background: transparent; cursor: pointer; }
+.explorer-toolbar button:hover:not(:disabled) { border-color: #aca899; background: #fff; }
+.explorer-address { display: flex; gap: 8px; padding: 4px 7px; border-bottom: 1px solid #aca899; }
+.explorer-address span { flex: 1; padding: 2px 5px; border: 1px solid #7f9db9; background: #fff; }
+.explorer-layout { display: flex; min-height: 0; flex: 1; background: #fff; }
+.explorer-sidebar { width: 190px; flex-shrink: 0; padding: 12px; color: #0b3f91; background: linear-gradient(135deg, #748bd2, #b7c6ee); }
+.explorer-sidebar h3 { margin: 0 0 5px; padding: 7px; border-radius: 5px 5px 0 0; color: #164895; background: #fff; font-size: 12px; }
+.explorer-sidebar h3:not(:first-child) { margin-top: 12px; }
+.explorer-sidebar button { width: 100%; padding: 4px 7px; border: 0; color: #164895; background: #f4f7ff; text-align: left; cursor: pointer; }
+.explorer-sidebar button:hover { text-decoration: underline; }
+.explorer-content { flex: 1; min-width: 0; overflow: auto; padding: 17px; }
+.explorer-view { display: none; }
+.explorer-view.active { display: block; }
+.explorer-view h2 { margin: 0 0 12px; padding-bottom: 4px; border-bottom: 1px solid #b9c9e3; color: #174a96; font-size: 15px; }
+.explorer-items { display: grid; grid-template-columns: repeat(2, minmax(150px, 1fr)); gap: 8px; margin-bottom: 24px; }
+.explorer-items button { display: grid; grid-template-columns: 38px 1fr; align-items: center; min-height: 52px; padding: 5px; border: 1px solid transparent; background: transparent; text-align: left; cursor: pointer; }
+.explorer-items button:hover { border-color: #7da2ce; background: #e8f1ff; }
+.explorer-items button > span { grid-row: 1 / 3; font-size: 30px; }
+.explorer-items small { color: #667; }
+.empty-folder { display: grid; place-items: center; gap: 8px; min-height: 180px; color: #6b7480; font-size: 15px; }
+.empty-folder:first-letter { font-size: 42px; }
+.project-detail > button { margin-bottom: 15px; padding: 5px 9px; }
+.project-detail h3 { margin: 18px 0 5px; color: #174a96; }
+.project-detail > a { display: inline-block; margin-top: 22px; color: #0645ad; }
+
+/* Prompt de Comando */
+.terminal-window { background: #000; }
+.terminal-screen { flex: 1; overflow-y: auto; padding: 8px 8px 0; color: #f1f1f1; background: #000; font: 14px/1.35 "Courier New", monospace; white-space: pre-wrap; }
+.terminal-form { display: flex; padding: 0 8px 8px; color: #f1f1f1; background: #000; font: 14px/1.35 "Courier New", monospace; }
+.terminal-form label { white-space: nowrap; }
+.terminal-form input { min-width: 0; flex: 1; border: 0; outline: 0; color: #f1f1f1; caret-color: #fff; background: #000; font: inherit; }
+
+/* Bloco de Notas e Painel de Controle */
+.notepad-content { flex: 1; overflow: auto; padding: 12px; color: #111; background: #fff; font: 15px/1.55 "Lucida Console", monospace; }
+.notepad-content p { margin-bottom: 18px; }
+.control-panel { flex: 1; overflow: auto; color: #163b70; background: #f4f7ff; }
+.control-panel > header { padding: 24px; color: #fff; background: linear-gradient(110deg, #346fc2, #77a8e8); }
+.control-panel > header h2 { margin-bottom: 6px; font-size: 23px; }
+.control-categories { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 24px; }
+.control-categories article { display: flex; align-items: center; gap: 13px; padding: 15px; border: 1px solid #b7c9e2; border-radius: 6px; background: #fff; }
+.control-categories article > span { font-size: 35px; }
+.control-categories h3 { margin-bottom: 4px; color: #0758b8; font-size: 15px; }
+
+.taskbar-app {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    width: min(180px, 35vw);
+    height: 26px;
+    margin: 2px 3px;
+    padding: 0 8px;
+    overflow: hidden;
+    border: 1px solid #1347a8;
+    border-radius: 2px;
+    color: #fff;
+    background: #3980e3;
+    font: 11px Tahoma, sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+.taskbar-app.visible { display: flex; }
+.taskbar-app.active { background: #1d4fa9; box-shadow: inset 1px 1px 2px #0c347b; }
+.taskbar-app img { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }
+.taskbar-app span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Celulares */
+@media (max-width: 767px) {
+    :root { --taskbar-height: 38px; }
+
+    .desktop-icons {
+        display: grid;
+        grid-template-columns: repeat(2, 86px);
+        grid-auto-rows: 82px;
+        gap: 4px;
+        align-content: start;
+        padding: 10px 6px;
+    }
+
+    .desktop-icon {
+        width: 86px;
+        min-height: 76px;
+        touch-action: manipulation;
+    }
+    .desktop-icon img { width: 38px; height: 38px; }
+    .desktop-icon span { font-size: 12px; }
+
+    #start-button { min-width: 84px; padding: 0 9px 0 5px; }
+    #start-button img { width: 24px; height: 24px; }
+    #taskbar-apps { gap: 1px; }
+    #system-tray { min-width: 56px; }
+    #system-tray #clock { top: 11px; right: 6px; font-size: 11px; }
+    .taskbar-app { width: 36px; min-width: 32px; height: 32px; margin: 3px 1px; padding: 0 8px; }
+    .taskbar-app span { display: none; }
+
+    #start-menu {
+        width: 100%;
+        max-height: calc(100dvh - var(--taskbar-height));
+        border-right-width: 2px;
+        border-radius: 7px 7px 0 0;
+    }
+    .start-header { min-height: 56px; padding: 5px 8px; }
+    #start-menu-photo { width: 42px; height: 42px; background-size: 30px; }
+    #start-menu-name h1 { font-size: 18px; }
+    .start-left { width: 54%; }
+    .start-right { width: 46%; }
+    .start-apps { min-height: 48px; padding: 5px 3px; }
+    .start-app-right { min-height: 42px; padding: 4px 3px; }
+    .start-apps img { width: 30px; height: 30px; }
+    .start-app-right img { width: 23px; height: 23px; }
+    .start-app-description { display: none; }
+    .start-footer { height: 22px; }
+
+    .window,
+    .window.maximized {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        border-right-width: 2px;
+        border-left-width: 2px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .window-titlebar { min-height: 36px; padding: 3px 4px 3px 7px; }
+    .window-title { font-size: 12px; }
+    .window-controls button { width: 31px; height: 29px; font-size: 17px; touch-action: manipulation; }
+    .window-controls [data-window-action="maximize"] { display: none; }
+
+    .browser-menu,
+    .explorer-menu,
+    .notepad-menu {
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .browser-menu::-webkit-scrollbar,
+    .explorer-menu::-webkit-scrollbar,
+    .notepad-menu::-webkit-scrollbar { display: none; }
+    .browser-menu { gap: 14px; min-height: 20px; }
+    .browser-toolbar { min-height: 38px; }
+    .browser-nav-button { min-width: 36px; height: 34px; }
+    .browser-address { padding: 5px; }
+    .browser-address label { display: none; }
+    .browser-address input { height: 28px; font-size: 12px; }
+    .browser-address button { height: 30px; min-width: 38px; }
+    .browser-hero { min-height: 0; padding: 28px 20px; }
+    .browser-hero h2 { font-size: 28px; }
+    .browser-links { flex-wrap: wrap; }
+    .browser-links a { padding: 9px 12px; }
+    .browser-section { padding: 22px 20px; }
+    .browser-projects { grid-template-columns: 1fr; }
+    .browser-status { min-height: 18px; }
+
+    .explorer-toolbar { min-height: 40px; gap: 4px; padding: 3px 5px; }
+    .explorer-toolbar button { min-height: 34px; }
+    .explorer-toolbar span, .explorer-sidebar { display: none; }
+    .explorer-address { align-items: center; gap: 5px; padding: 4px 5px; }
+    .explorer-address strong { display: none; }
+    .explorer-address span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .explorer-content { padding: 12px; }
+    .explorer-items, .control-categories { grid-template-columns: 1fr; }
+    .explorer-items { gap: 3px; margin-bottom: 17px; }
+    .explorer-items button { min-height: 58px; }
+
+    .terminal-screen, .terminal-form { font-size: 12px; }
+    .terminal-form { flex-wrap: wrap; gap: 3px; padding-top: 4px; }
+    .terminal-form label { width: 100%; overflow: hidden; text-overflow: ellipsis; }
+    .terminal-form input { width: 100%; min-height: 24px; }
+    .notepad-content { padding: 12px; font-size: 13px; }
+    .control-panel > header { padding: 18px; }
+    .control-panel > header h2 { font-size: 20px; }
+    .control-categories { gap: 9px; padding: 14px; }
+    .control-categories article { padding: 11px; }
+    .control-categories article > span { font-size: 29px; }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root { --taskbar-height: 36px; --start-menu-width: 410px; }
+
+    .desktop-icons {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(4, 88px);
+        grid-auto-columns: 92px;
+        align-content: start;
+        padding: 12px 8px;
+    }
+    .desktop-icon { width: 88px; min-height: 78px; }
+    .desktop-icon img { width: 38px; height: 38px; }
+    #start-button { min-width: 100px; }
+    #system-tray { min-width: 76px; }
+    #system-tray #clock { top: 10px; }
+    .taskbar-app { height: 30px; margin-top: 3px; margin-bottom: 3px; }
+
+    #start-menu { width: min(var(--start-menu-width), 70vw); }
+    .start-apps { min-height: 52px; }
+    .start-app-right { min-height: 42px; }
+
+    .window { top: 5%; left: 5%; width: 90%; height: 88%; }
+    .window-titlebar { min-height: 34px; }
+    .window-controls button { width: 29px; height: 27px; }
+    .explorer-sidebar { width: 170px; }
+    .control-categories { gap: 10px; padding: 18px; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .desktop-icons {
+        display: grid;
+        height: 100%;
+        padding-top: 10px;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(auto-fit, minmax(70px, 90px));
+        align-content: start;
+    }
+    #desktop { background-size: cover; }
+    #start-button:hover {
+        background: linear-gradient(to bottom, #6fbd6a, #4fa64f 15%, #59b65e 45%, #288438 85%, #3a7c46);
+    }
+}
+
+/* Celulares em modo paisagem ou telas com pouca altura */
+@media (max-height: 500px) and (max-width: 1023px) {
+    .start-header { min-height: 48px; }
+    #start-menu-photo { width: 36px; height: 36px; }
+    .start-footer { display: none; }
+    .start-apps { min-height: 42px; }
+    .start-app-right { min-height: 38px; }
+    .browser-hero { padding-top: 18px; padding-bottom: 18px; }
 }

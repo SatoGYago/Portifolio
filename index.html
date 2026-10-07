@@ -1,27 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Portfólio de Yago</title>
 </head>
 <body>
     <main id="desktop">
 
         <div class="desktop-icons">
-            <div class="desktop-icon">
+            <button type="button" class="desktop-icon" data-window="computer-window">
                 <img src="imagens/XPIcon.webp" alt="">
-                <span>Meu Computador</span></div>
-            <div class="desktop-icon">
-                <img src="" alt="">
-                <span></span></div>
-            <div class="desktop-icon">
-                <img src="" alt="">
-                <span></span></div>
-            <div class="desktop-icon">
-                <img src="" alt="">
-                <span></span></div>
+                <span>Meu Computador</span>
+            </button>
+            <button type="button" class="desktop-icon" data-window="about-window">
+                <img src="imagens/notepad_logo.png" alt="">
+                <span>Sobre Mim</span>
+            </button>
+            <button type="button" class="desktop-icon" data-window="terminal-window">
+                <img src="imagens/Command Prompt.ico" alt="">
+                <span>Prompt de Comando</span>
+            </button>
+            <button type="button" class="desktop-icon" data-window="control-panel-window">
+                <img src="imagens/Control_Panel_XP.webp" alt="">
+                <span>Painel de Controle</span>
+            </button>
+        </div>
+
+        <div id="windows-container">
+            <section class="window" id="browser-window" aria-hidden="true" aria-labelledby="browser-window-title">
+                <header class="window-titlebar">
+                    <div class="window-title">
+                        <img src="imagens/145-1453188_ie-logo-windows-xp-internet-explorer-icon.png" alt="">
+                        <span id="browser-window-title">Internet Explorer</span>
+                    </div>
+                    <div class="window-controls">
+                        <button type="button" data-window-action="minimize" aria-label="Minimizar">_</button>
+                        <button type="button" data-window-action="maximize" aria-label="Maximizar">□</button>
+                        <button type="button" class="window-close" data-window-action="close" aria-label="Fechar">×</button>
+                    </div>
+                </header>
+
+                <div class="browser-menu" aria-label="Menu do navegador">
+                    <span>Arquivo</span><span>Editar</span><span>Exibir</span><span>Favoritos</span><span>Ferramentas</span><span>Ajuda</span>
+                </div>
+
+                <nav class="browser-toolbar" aria-label="Navegação">
+                    <button type="button" class="browser-nav-button" aria-label="Voltar" disabled>← <span>Voltar</span></button>
+                    <button type="button" class="browser-nav-button" aria-label="Avançar" disabled>→</button>
+                    <button type="button" class="browser-nav-button" data-browser-action="refresh" aria-label="Atualizar">↻</button>
+                    <button type="button" class="browser-nav-button" data-browser-action="home" aria-label="Página inicial">⌂</button>
+                </nav>
+
+                <form class="browser-address" id="browser-address-form">
+                    <label for="browser-address-input">Endereço</label>
+                    <img src="imagens/145-1453188_ie-logo-windows-xp-internet-explorer-icon.png" alt="">
+                    <input id="browser-address-input" value="https://yago.dev/inicio" aria-label="Endereço">
+                    <button type="submit">Ir</button>
+                </form>
+
+                <div class="browser-page" id="browser-page">
+                    <section class="browser-hero" id="inicio">
+                        <p class="browser-eyebrow">Bem-vindo ao meu espaço na web</p>
+                        <h2>Olá, eu sou o Yago.</h2>
+                        <p>Este portfólio transforma minhas experiências, habilidades e projetos em um desktop inspirado no Windows XP.</p>
+                        <div class="browser-links">
+                            <a href="#sobre">Sobre mim</a>
+                            <a href="#projetos">Ver projetos</a>
+                        </div>
+                    </section>
+
+                    <section class="browser-section" id="sobre">
+                        <h3>Sobre mim</h3>
+                        <p>Sou estudante e desenvolvedor, interessado em criar interfaces úteis, criativas e fáceis de usar.</p>
+                    </section>
+
+                    <section class="browser-section" id="projetos">
+                        <h3>Projetos em destaque</h3>
+                        <div class="browser-projects">
+                            <article><strong>Portfólio Windows XP</strong><span>HTML, CSS e JavaScript</span></article>
+                            <article><strong>Novos projetos em breve</strong><span>Acompanhe pelo GitHub</span></article>
+                        </div>
+                    </section>
+                </div>
+
+                <footer class="browser-status"><span>Concluído</span><span>Internet</span></footer>
+            </section>
+
+            <section class="window" id="computer-window" aria-hidden="true" aria-labelledby="computer-window-title">
+                <header class="window-titlebar">
+                    <div class="window-title"><img src="imagens/XPIcon.webp" alt=""><span id="computer-window-title">Meu Computador</span></div>
+                    <div class="window-controls"><button type="button" data-window-action="minimize" aria-label="Minimizar">_</button><button type="button" data-window-action="maximize" aria-label="Maximizar">□</button><button type="button" class="window-close" data-window-action="close" aria-label="Fechar">×</button></div>
+                </header>
+                <div class="explorer-menu">Arquivo&nbsp;&nbsp; Editar&nbsp;&nbsp; Exibir&nbsp;&nbsp; Favoritos&nbsp;&nbsp; Ferramentas&nbsp;&nbsp; Ajuda</div>
+                <div class="explorer-toolbar"><button type="button" data-explorer-back disabled>← Voltar</button><button type="button" data-explorer-view="computer">⌂ Início</button><span>🔍 Pesquisar</span><span>📁 Pastas</span></div>
+                <div class="explorer-address"><strong>Endereço</strong><span id="explorer-address-value">Meu Computador</span></div>
+                <div class="explorer-layout">
+                    <aside class="explorer-sidebar"><h3>Tarefas do sistema</h3><button type="button" data-window="control-panel-window">Exibir habilidades</button><button type="button" data-window="about-window">Sobre Yago</button><h3>Outros locais</h3><button type="button" data-explorer-view="projects">Meus Projetos</button><button type="button" data-explorer-view="documents">Meus Documentos</button></aside>
+                    <div class="explorer-content">
+                        <section class="explorer-view active" data-explorer-page="computer">
+                            <h2>Arquivos armazenados neste computador</h2>
+                            <div class="explorer-items"><button type="button" data-explorer-view="projects"><span>📁</span><strong>Meus Projetos</strong></button><button type="button" data-explorer-view="documents"><span>📁</span><strong>Meus Documentos</strong></button><button type="button" data-explorer-view="pictures"><span>🖼️</span><strong>Minhas Imagens</strong></button></div>
+                            <h2>Unidades de disco rígido</h2><div class="explorer-items"><button type="button"><span>💾</span><strong>Disco local (C:)</strong></button></div>
+                        </section>
+                        <section class="explorer-view" data-explorer-page="projects"><h2>Meus Projetos</h2><div class="explorer-items project-items"><button type="button" data-project="delivery"><span>📁</span><strong>Projeto Delivery</strong><small>Aplicação de entregas</small></button><button type="button" data-project="tasks"><span>📁</span><strong>Task Tracker</strong><small>Organização de tarefas</small></button><button type="button" data-project="django"><span>📁</span><strong>Projeto Django</strong><small>Aplicação web com Python</small></button><button type="button" data-project="portfolio"><span>📁</span><strong>Portfólio Windows XP</strong><small>HTML, CSS e JavaScript</small></button></div></section>
+                        <section class="explorer-view" data-explorer-page="documents"><h2>Meus Documentos</h2><div class="explorer-items"><button type="button"><span>📄</span><strong>Currículo.pdf</strong></button><button type="button"><span>📁</span><strong>Certificados</strong></button><button type="button"><span>📁</span><strong>Formação</strong></button></div></section>
+                        <section class="explorer-view" data-explorer-page="pictures"><h2>Minhas Imagens</h2><p>As imagens dos projetos serão exibidas aqui conforme forem adicionadas.</p><div class="empty-folder">🖼️<span>Galeria em construção</span></div></section>
+                        <section class="explorer-view project-detail" data-explorer-page="project-detail"><button type="button" data-explorer-view="projects">← Voltar aos projetos</button><h2 id="project-detail-title"></h2><p id="project-detail-description"></p><h3>Tecnologias</h3><p id="project-detail-technologies"></p><a href="https://github.com/SatoGYago" target="_blank" rel="noopener noreferrer">Ver projetos no GitHub</a></section>
+                    </div>
+                </div>
+                <footer class="browser-status"><span id="explorer-status">4 objetos</span><span>Meu Computador</span></footer>
+            </section>
+
+            <section class="window terminal-window" id="terminal-window" aria-hidden="true" aria-labelledby="terminal-window-title">
+                <header class="window-titlebar"><div class="window-title"><img src="imagens/Command Prompt.ico" alt=""><span id="terminal-window-title">C:\WINDOWS\system32\cmd.exe</span></div><div class="window-controls"><button type="button" data-window-action="minimize" aria-label="Minimizar">_</button><button type="button" data-window-action="maximize" aria-label="Maximizar">□</button><button type="button" class="window-close" data-window-action="close" aria-label="Fechar">×</button></div></header>
+                <div class="terminal-screen" id="terminal-output" aria-live="polite"><div>Microsoft Windows XP [versão 5.1.2600]</div><div>(C) Copyright 1985-2001 Microsoft Corp.</div><br><div>Digite <strong>help</strong> para ver os comandos disponíveis.</div></div>
+                <form class="terminal-form" id="terminal-form"><label for="terminal-input">C:\Documents and Settings\Yago&gt;</label><input id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Comando"></form>
+            </section>
+
+            <section class="window notepad-window" id="about-window" aria-hidden="true" aria-labelledby="about-window-title">
+                <header class="window-titlebar"><div class="window-title"><img src="imagens/notepad_logo.png" alt=""><span id="about-window-title">sobre_mim.txt - Bloco de notas</span></div><div class="window-controls"><button type="button" data-window-action="minimize" aria-label="Minimizar">_</button><button type="button" data-window-action="maximize" aria-label="Maximizar">□</button><button type="button" class="window-close" data-window-action="close" aria-label="Fechar">×</button></div></header>
+                <div class="notepad-menu">Arquivo&nbsp;&nbsp; Editar&nbsp;&nbsp; Formatar&nbsp;&nbsp; Exibir&nbsp;&nbsp; Ajuda</div>
+                <article class="notepad-content"><p>Olá!</p><p>Meu nome é Yago. Sou estudante e desenvolvedor, com interesse em criar aplicações web e interfaces que unam criatividade e utilidade.</p><p>Atualmente estudo HTML, CSS, JavaScript, Python, Bootstrap e Django.</p><p>Este portfólio foi construído como uma experiência inspirada no Windows XP para apresentar meus projetos e habilidades de uma forma diferente.</p><p>Obrigado pela visita!</p></article>
+            </section>
+
+            <section class="window" id="control-panel-window" aria-hidden="true" aria-labelledby="control-panel-title">
+                <header class="window-titlebar"><div class="window-title"><img src="imagens/Control_Panel_XP.webp" alt=""><span id="control-panel-title">Painel de Controle</span></div><div class="window-controls"><button type="button" data-window-action="minimize" aria-label="Minimizar">_</button><button type="button" data-window-action="maximize" aria-label="Maximizar">□</button><button type="button" class="window-close" data-window-action="close" aria-label="Fechar">×</button></div></header>
+                <div class="control-panel"><header><h2>Escolha uma categoria</h2><p>Conheça as tecnologias, ferramentas e áreas que fazem parte da minha formação.</p></header><div class="control-categories"><article><span>🌐</span><div><h3>Desenvolvimento Web</h3><p>HTML, CSS, JavaScript e Bootstrap</p></div></article><article><span>💻</span><div><h3>Linguagens</h3><p>JavaScript e Python</p></div></article><article><span>🗄️</span><div><h3>Banco de Dados</h3><p>Modelagem e integração com aplicações</p></div></article><article><span>🛠️</span><div><h3>Ferramentas</h3><p>Git, GitHub e desenvolvimento responsivo</p></div></article><article><span>🎓</span><div><h3>Formação</h3><p>Aprendizado contínuo e projetos práticos</p></div></article></div></div>
+            </section>
         </div>
 
         <div id="start-menu">
@@ -32,72 +139,68 @@
                 <div id="start-menu-name"><h1>Yago</h1></div>
             </div>
             <div class="start-body">
-                <div class="start-body">
-                    <div class="start-left">
-                        <div class="start-apps">
-                            <img src="imagens/145-1453188_ie-logo-windows-xp-internet-explorer-icon.png" alt="Internet Explorer">
-                            <div class="start-app-text"><span class="start-app-name">Internet Explorer</span><span class="start-app-description">Navegador da Web</span></div>
-                        </div>
-                        <div class="start-apps">
-                            <img src="imagens/Command Prompt.ico" alt="Command Prompt">
-                            <div class="start-app-text"><span class="start-app-name">CMD</span><span class="start-app-description">Prompt de Comando</span></div>
-                        </div>
-                        <a class="start-apps" href="https://github.com/SatoGYago" target="_blank">
-                            <img src="imagens/githublogo.png" alt="GitHub">
-                            <div class="start-app-text"><span class="start-app-name">GitHub</span><span class="start-app-description">Meu perfil do GitHub</span></div>
-                        </a>
-                        <a class="start-apps" href="https://www.linkedin.com/" target="_blank">
-                            <img src="imagens/linkedin.png" alt="LinkedIn">
-                            <div class="start-app-text"><span class="start-app-name">LinkedIn</span><span class="start-app-description">Meu perfil do LinkedIn</span></div>
-                        </a>
-                        <div class="start-apps">
-                            <img src="imagens/notepad_logo.png" alt="Bloco de Notas">
-                            <div class="start-app-text"><span class="start-app-name">Bloco de Notas</span><span class="start-app-description">sobre-mim</span></div>
-                        </div>
+                <div class="start-left">
+                    <button type="button" class="start-apps" data-window="browser-window">
+                        <img src="imagens/145-1453188_ie-logo-windows-xp-internet-explorer-icon.png" alt="Internet Explorer">
+                        <span class="start-app-text"><span class="start-app-name">Internet Explorer</span><span class="start-app-description">Navegador da Web</span></span>
+                    </button>
+                    <button type="button" class="start-apps" data-window="terminal-window">
+                        <img src="imagens/Command Prompt.ico" alt="Command Prompt">
+                        <span class="start-app-text"><span class="start-app-name">CMD</span><span class="start-app-description">Prompt de Comando</span></span>
+                    </button>
+                    <a class="start-apps section-start" href="https://github.com/SatoGYago" target="_blank" rel="noopener noreferrer">
+                        <img src="imagens/githublogo.png" alt="GitHub">
+                        <span class="start-app-text"><span class="start-app-name">GitHub</span><span class="start-app-description">Meu perfil do GitHub</span></span>
+                    </a>
+                    <a class="start-apps" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="imagens/linkedin.png" alt="LinkedIn">
+                        <span class="start-app-text"><span class="start-app-name">LinkedIn</span><span class="start-app-description">Meu perfil do LinkedIn</span></span>
+                    </a>
+                    <button type="button" class="start-apps" data-window="about-window">
+                        <img src="imagens/notepad_logo.png" alt="Bloco de Notas">
+                        <span class="start-app-text"><span class="start-app-name">Bloco de Notas</span><span class="start-app-description">sobre-mim</span></span>
+                    </button>
     
-                    </div>
-                    <div class="start-right">
-                        <button class="start-app-right" data-window="documents-window">
-                            <img src="imagens/documents folder.png" alt="">
-                            <span>Meus documentos</span>
-                        </button>
-
-                        <button class="start-app-right" data-window="pictures-window">
-                            <img src="imagens/pictures folder.png" alt="">
-                            <span>Minhas imagens</span>
-                        </button>
-
-                        <button class="start-app-right" data-window="computer-window">
-                            <img src="imagens/XPIcon.webp" alt="">
-                            <span>Meu computador</span>
-                        </button>
-
-                        <button class="start-app-right" data-window="control-panel-window">
-                            <img src="imagens/Control_Panel_XP.webp" alt="">
-                            <span>Painel de controle</span>
-                        </button>
-
-                        <button class="start-app-right" data-window="search-window">
-                            <img src="imagens/search_icon.png" alt="">
-                            <span>Pesquisar</span>
-                        </button>
-
-                        <button class="start-app-right" data-action="run">
-                            <img src="imagens/run_icon.png" alt="">
-                            <span>Executar...</span>
-                        </button>
-
-
-                    </div>
                 </div>
-                <div class="start-footer">
+                <div class="start-right">
+                    <button class="start-app-right" data-window="computer-window" data-explorer-view="documents">
+                        <img src="imagens/documents folder.png" alt="">
+                        <span>Meus documentos</span>
+                    </button>
+
+                    <button class="start-app-right" data-window="computer-window" data-explorer-view="pictures">
+                        <img src="imagens/pictures folder.png" alt="">
+                        <span>Minhas imagens</span>
+                    </button>
+
+                    <button class="start-app-right section-start" data-window="computer-window">
+                        <img src="imagens/XPIcon.webp" alt="">
+                        <span>Meu computador</span>
+                    </button>
+
+                    <button class="start-app-right" data-window="control-panel-window">
+                        <img src="imagens/Control_Panel_XP.webp" alt="">
+                        <span>Painel de controle</span>
+                    </button>
+
+                    <button class="start-app-right section-start" data-window="search-window">
+                        <img src="imagens/search_icon.png" alt="">
+                        <span>Pesquisar</span>
+                    </button>
+
+                    <button class="start-app-right" data-action="run">
+                        <img src="imagens/run_icon.png" alt="">
+                        <span>Executar...</span>
+                    </button>
+
 
                 </div>
             </div>
+            <div class="start-footer"></div>
         </div>
     </main>
     <footer id="taskbar">
-        <button id="start-button">
+        <button id="start-button" type="button" aria-controls="start-menu" aria-expanded="false">
             <img src="imagens/windows-xp.png" alt="">
             <span>iniciar</span>
         </button>
@@ -110,6 +213,6 @@
             <span id="clock"></span>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html> 
