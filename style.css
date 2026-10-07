@@ -340,7 +340,7 @@ body
 
                 .start-right
                 {
-                    height: 122.5%;
+                    height: 118%;
                     width: 50%;
                 }
                 .start-left
@@ -354,4 +354,60 @@ body
                 }
             }
         }
+}
+
+.start-right {
+    width: 50%;
+    padding: 6px 5px;
+
+    background: linear-gradient(
+        to right,
+        #d3e5fa 0%,
+        #d9e9fb 45%,
+        #c9dff7 100%
+    );
+
+    border-left: 1px solid #95bdee;
+}
+
+.start-app-right {
+    width: 100%;
+    min-height: 32px;
+    padding: 3px 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    border: none;
+    background: transparent;
+
+    font-family: Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #00156e;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.start-app-right img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.start-app-right:hover {
+    background: #2f71cd;
+    color: #fff;
+
+    outline: 1px solid #245dab;
+}
+
+/* Linha que inicia um novo grupo */
+.start-app-right.section-start {
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid #a6c4e8;
 }
