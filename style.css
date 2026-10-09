@@ -710,3 +710,21 @@ body
     .start-app-right { min-height: 38px; }
     .browser-hero { padding-top: 18px; padding-bottom: 18px; }
 }
+
+#contato
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    form
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 400px;
+    }
+}
